@@ -7,13 +7,13 @@ async function selectionSort() {
 		let min = i;
 		for (let j = i + 1; j < column.length; j++) {
 			column[j].style.background = SELECT_COLS;
-			if (parseInt(column[j].style.height) < parseInt(arr[min].style.height)) {
+			if (parseInt(column[j].style.height) < parseInt(column[min].style.height)) {
 				min = j;
 				column[min].style.background = INSERTION_COLS;
 				await pauseSorter(pauseTime);
 			}
 			else {
-				column[j].style.background = SELECT_COLS;
+				column[j].style.background = DESELECT_COLS;
 				await pauseSorter(pauseTime);
 			}
 			for (let k = min + 1; k < column.length; k++) {
@@ -25,7 +25,7 @@ async function selectionSort() {
 		}
 
 		swapColumns(column[i], column[min]);
-		column[i].style.background = SELECT_COLS;
+		column[i].style.background = DESELECT_COLS;
 	}
 	for (let k = column.length - 1; k >= 0; k--) {
 		column[k].style.background = COMPLETE_COLS;
