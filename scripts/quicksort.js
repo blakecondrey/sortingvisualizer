@@ -8,8 +8,8 @@ async function partition(column, left, right) {
 		await pauseSorter(pauseTime);
 		if (parseInt(column[j].style.height) < parseInt(column[pivot].style.height)) {
 			i++;
-			column[i].style.background = SELECT_COLS;
-			column[j].style.background = SELECT_COLS;
+			column[i].style.background = INSERTION_COLS;
+			column[j].style.background = INSERTION_COLS;
 			await pauseSorter(pauseTime);
 			swapColumns(column[i], column[j]);
 			column[i].style.background = DESELECT_COLS;
@@ -44,7 +44,7 @@ async function quickSort() {
 	disableUserInput();
 	let column = document.querySelectorAll(".column");
 	for (let k = column.length - 1; k >= 0; k--) {
-		column[k].style.background = INSERTION_COLS;
+		column[k].style.background = PARTITION_COLS;
 	}
 	await quickSortHelper(column, 0, parseInt(column.length) - 1);
 	for (let k = column.length - 1; k >= 0; k--) {
