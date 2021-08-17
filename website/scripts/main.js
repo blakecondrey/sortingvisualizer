@@ -54,8 +54,8 @@ function disableUserInput() {
 }
 
 function enableUserInput() {
-    for (i in algorithms) {
-        document.querySelector(algorithms[i]).disabled = false;
+    for (i in ALGORITHMS) {
+        document.querySelector(ALGORITHMS[i]).disabled = false;
     }
     document.querySelector("#generate-array").disabled = false;
     document.querySelector("#array-size").disabled = false;

@@ -22,11 +22,11 @@ async function partition(column, left, right) {
 	await pauseSorter(pauseTime);
 
 	for(let k = 0; k <= pivot; k++) {
-		column[k].style.background = COMPLETE_COLS;
+		column[k].style.background = PARTITION_COLS;
 	}
 
 	for (let k = pivot + 1; k < column.length; k++) {
-		column[k].style.background = COMPLETE_COLS;
+		column[k].style.background = PARTITION_COLS;
 	}
 
 	return i;
