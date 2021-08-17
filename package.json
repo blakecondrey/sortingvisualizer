@@ -1,0 +1,24 @@
+{
+  "name": "sortingvisualizer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "gh-pages -d website"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blakecondrey/sortingvisualizer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://blakecondrey.github.io/sortingvisualizer",
+  "bugs": {
+    "url": "https://github.com/blakecondrey/sortingvisualizer/issues"
+  },
+  "homepage": "https://github.com/blakecondrey/sortingvisualizer#readme",
+  "dependencies": {
+    "gh-pages": "^3.2.3"
+  }
+}
