@@ -2,6 +2,12 @@ let newArray = [];
 let arrayElement = document.getElementById("array-size");
 document.querySelector("#sort-speed").disabled = true;
 
+const SELECT_COLS = '#ff0000';
+const DESELECT_COLS = '#28559e';
+const COMPLETE_COLS = '#64ffda';
+const INSERTION_COLS = '#ffa500';
+const PARTITION_COLS = '#ea00ff';
+
 generateRandomArray();
 
 function generateRandomArray() {
@@ -36,7 +42,7 @@ function swapColumns (colOne, colTwo) {
 
 arrayElement.addEventListener("input", generateRandomArray);
 
-const algorithms = [
+const ALGORITHMS = [
     "#bubble-sort",
     "#insertion-sort",
     "#selection-sort",
@@ -45,8 +51,8 @@ const algorithms = [
 ]
 
 function disableUserInput() {
-    for (i in algorithms) {
-        document.querySelector(algorithms[i]).disabled = true;
+    for (i in ALGORITHMS) {
+        document.querySelector(ALGORITHMS[i]).disabled = true;
     }
     document.querySelector("#generate-array").disabled = true;
     document.querySelector("#array-size").disabled = true;

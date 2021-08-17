@@ -1,8 +1,3 @@
-const SELECT_COLS = '#ff0000';
-const DESELECT_COLS = '#28559e';
-const COMPLETE_COLS = '#64ffda';
-const INSERTION_COLS = '#ffa500';
-
 async function merge(column, start, middle, end) {
 	const valueFront = middle - start + 1;
 	const valueStart = end - middle;
@@ -70,7 +65,7 @@ async function mergeHelper(column, left, right) {
 
 async function mergeSort() {
 	disableUserInput();
-	left column = document.querySelectorAll(".column");
+	let column = document.querySelectorAll(".column");
 	await mergeHelper(column, 0, parseInt(column.length) - 1);
 	for (let k = column.length - 1; k >= 0; k--) {
 		column[k].style.background = COMPLETE_COLS;

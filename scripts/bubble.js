@@ -1,7 +1,3 @@
-const SELECT_COLS = '#ff0000';
-const DESELECT_COLS = '#28559e';
-const COMPLETE_COLS = '#64ffda';
-
 async function bubbleSort() {
 	disableUserInput();
 	
