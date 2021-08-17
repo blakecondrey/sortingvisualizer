@@ -1,8 +1,3 @@
-const SELECT_COLS = '#ff0000';
-const DESELECT_COLS = '#28559e';
-const COMPLETE_COLS = '#64ffda';
-const INSERTION_COLS = '#ffa500';
-
 async function selectionSort() {
 	disableUserInput();
 
