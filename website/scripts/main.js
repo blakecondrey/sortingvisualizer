@@ -2,12 +2,6 @@ let newArray = [];
 let arrayElement = document.getElementById("array-size");
 document.querySelector("#sort-speed").disabled = true;
 
-const SELECT_COLS = '#ff0000';
-const DESELECT_COLS = '#28559e';
-const COMPLETE_COLS = '#64ffda';
-const INSERTION_COLS = '#ffa500';
-const PARTITION_COLS = '#ea00ff';
-
 generateRandomArray();
 
 function generateRandomArray() {
@@ -79,5 +73,11 @@ let sortSpeed = document.getElementById("sort-speed");
 sortSpeed.addEventListener("input", () => {
     pauseTime = 250 / (parseInt(sortSpeed.value));
 })
+
+const SELECT_COLS = '#ff0000';
+const DESELECT_COLS = '#28559e';
+const COMPLETE_COLS = '#64ffda';
+const INSERTION_COLS = '#ffa500';
+const PARTITION_COLS = '#ea00ff';
 
 
