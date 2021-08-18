@@ -6,13 +6,13 @@ async function merge(column, start, middle, end) {
 	let right = [];
 
 	for (let i = 0; i < valueFront; i++) {
-		column[start + i].style.background = SELECT_COLS;
+		markColumn(column[start + i], COLORS.selector);
 		left[i] = column[start + i].style.height;
 		await pauseSorter(pauseTime);
 	}
 
 	for (let i = 0; i < valueStart; i++) {
-		column[middle + 1 + i].style.background = SELECT_COLS;
+		markColumn(column[middle + 1 + i], COLORS.selector);
 		right[i] = column[middle + 1 + i].style.height;
 		await pauseSorter(pauseTime);
 	}
@@ -21,14 +21,14 @@ async function merge(column, start, middle, end) {
 
 	while( i < valueFront && j < valueStart) {
 		if (parseInt(left[i]) <= parseInt(right[j])) {
-			column[k].style.background = DESELECT_COLS;
+			markColumn(column[k], COLORS.deselector);
 			column[k].style.height = left[i];
 			i++;
 			k++;
 		}
 
 		else {
-			column[k].style.background = DESELECT_COLS;
+			markColumn(column[k], COLORS.deselector);
 			column[k].style.height = right[j];
 			j++;
 			k++;
@@ -36,7 +36,7 @@ async function merge(column, start, middle, end) {
 		await pauseSorter(pauseTime);
 	}
 	while (i < valueFront) {
-		column[k].style.background = DESELECT_COLS;
+		markColumn(column[k], COLORS.deselector);
 		column[k].style.height = left[i];
 		i++;
 		k++;
@@ -44,7 +44,7 @@ async function merge(column, start, middle, end) {
 	}
 
 	while (j < valueStart) {
-		column[k].style.background = DESELECT_COLS;
+		markColumn(column[k], COLORS.deselector);
 		column[k].style.height = right[j];
 		j++;
 		k++;
@@ -68,12 +68,9 @@ async function mergeSort() {
 	let column = document.querySelectorAll(".column");
 	await mergeHelper(column, 0, parseInt(column.length) - 1);
 	for (let k = column.length - 1; k >= 0; k--) {
-		column[k].style.background = COMPLETE_COLS;
+		markColumn(column[k], COLORS.complete);
 		await pauseSorter(100 / newArray.length);
 	}
 
 	enableUserInput();
 }
-
-
-
