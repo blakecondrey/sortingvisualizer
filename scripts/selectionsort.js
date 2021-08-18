@@ -3,32 +3,32 @@ async function selectionSort() {
 
 	const column = document.querySelectorAll(".column");
 	for (let i = 0; i < column.length - 1; i++) {
-		column[i].style.background = SELECT_COLS;
+		markColumn(column[i], COLORS.selector);
 		let min = i;
 		for (let j = i + 1; j < column.length; j++) {
-			column[j].style.background = SELECT_COLS;
-			if (parseInt(column[j].style.height) < parseInt(column[min].style.height)) {
+			markColumn(column[j], COLORS.selector);
+			if (compareColumns(column[min], column[j])) {
 				min = j;
-				column[min].style.background = INSERTION_COLS;
+				markColumn(column[min], COLORS.inserter);
 				await pauseSorter(pauseTime);
 			}
 			else {
-				column[j].style.background = DESELECT_COLS;
+				markColumn(column[j], COLORS.deselector);
 				await pauseSorter(pauseTime);
 			}
 			for (let k = min + 1; k < column.length; k++) {
-				column[k].style.background = COMPLETE_COLS;
+				markColumn(column[k], COLORS.complete);
 			}
 			for (let l = i + 1; l < min; l++) {
-				column[l].style.background = COMPLETE_COLS;
+				markColumn(column[l], COLORS.complete);
 			}
 		}
 
 		swapColumns(column[i], column[min]);
-		column[i].style.background = DESELECT_COLS;
+		markColumn(column[i], COLORS.deselector);
 	}
 	for (let k = column.length - 1; k >= 0; k--) {
-		column[k].style.background = COMPLETE_COLS;
+		markColumn(column[k], COLORS.complete);
 		await pauseSorter(100 / newArray.length);
 	}
 

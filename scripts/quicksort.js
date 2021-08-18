@@ -1,19 +1,19 @@
 async function partition(column, left, right) {
 	let pivot = right;
 	let i = left - 1;
-	column[pivot].style.background = SELECT_COLS;
+	markColumn(column[pivot], COLORS.selector);
 
 	for (let j = left; j <= right - 1; j++) {
-		column[j].style.background = PARTITION_COLS;
+		markColumn(column[j], COLORS.partitioner);
 		await pauseSorter(pauseTime);
-		if (parseInt(column[j].style.height) < parseInt(column[pivot].style.height)) {
+		if (compareColumns(column[pivot], column[j])) {
 			i++;
-			column[i].style.background = INSERTION_COLS;
-			column[j].style.background = INSERTION_COLS;
+			markColumn(column[i], COLORS.inserter);
+			markColumn(column[j], COLORS.inserter);
 			await pauseSorter(pauseTime);
 			swapColumns(column[i], column[j]);
-			column[i].style.background = DESELECT_COLS;
-			column[j].style.background = DESELECT_COLS;
+			markColumn(column[i], COLORS.deselector);
+			markColumn(column[j], COLORS.deselector);
 			await pauseSorter(pauseTime);
 		}
 	}
@@ -22,11 +22,11 @@ async function partition(column, left, right) {
 	await pauseSorter(pauseTime);
 
 	for(let k = 0; k <= pivot; k++) {
-		column[k].style.background = COMPLETE_COLS;
+		markColumn(column[k], COLORS.complete);
 	}
 
 	for (let k = pivot + 1; k < column.length; k++) {
-		column[k].style.background = COMPLETE_COLS;
+		markColumn(column[k], COLORS.complete);
 	}
 
 	return i;
@@ -44,11 +44,11 @@ async function quickSort() {
 	disableUserInput();
 	let column = document.querySelectorAll(".column");
 	for (let k = column.length - 1; k >= 0; k--) {
-		column[k].style.background = COMPLETE_COLS;
+		markColumn(column[k], COLORS.complete);
 	}
 	await quickSortHelper(column, 0, parseInt(column.length) - 1);
 	for (let k = column.length - 1; k >= 0; k--) {
-		column[k].style.background = COMPLETE_COLS;
+		markColumn(column[k], COLORS.complete);
 	}
 	enableUserInput();
 }
