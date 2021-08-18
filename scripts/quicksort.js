@@ -22,11 +22,11 @@ async function partition(column, left, right) {
 	await pauseSorter(pauseTime);
 
 	for(let k = 0; k <= pivot; k++) {
-		column[k].style.background = PARTITION_COLS;
+		column[k].style.background = COMPLETE_COLS;
 	}
 
 	for (let k = pivot + 1; k < column.length; k++) {
-		column[k].style.background = PARTITION_COLS;
+		column[k].style.background = COMPLETE_COLS;
 	}
 
 	return i;
@@ -44,7 +44,7 @@ async function quickSort() {
 	disableUserInput();
 	let column = document.querySelectorAll(".column");
 	for (let k = column.length - 1; k >= 0; k--) {
-		column[k].style.background = PARTITION_COLS;
+		column[k].style.background = COMPLETE_COLS;
 	}
 	await quickSortHelper(column, 0, parseInt(column.length) - 1);
 	for (let k = column.length - 1; k >= 0; k--) {
