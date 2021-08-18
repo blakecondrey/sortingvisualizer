@@ -14,8 +14,8 @@ async function bubbleSort() {
 				await pauseSorter(pauseTime);
 			}
 			else {
-				column[j].style.background = DESELECT_COLS;
-				column[j + 1].style.background = DESELECT_COLS;
+				column[j].style.background = SELECT_COLS;
+				column[j + 1].style.background = SELECT_COLS;
 				await pauseSorter(pauseTime);
 			}
 			for (let k = j; k >= 0; k--) {
