@@ -1,9 +1,11 @@
 // Helper functions
 
+// visually selects column in array
 function markColumn(column, color) {
     column.style.background = color;
 }
 
+// compares two columns using greater-than to prepare for swap
 function compareColumns(colOne, colTwo) {
     if (parseInt(colOne.style.height) > parseInt(colTwo.style.height)) {
         return true;
@@ -11,12 +13,14 @@ function compareColumns(colOne, colTwo) {
     return false;
 }
 
+// column values swapped
 function swapColumns (colOne, colTwo) {
     let tempCol = colOne.style.height;
     colOne.style.height = colTwo.style.height;
     colTwo.style.height = tempCol;
 }
 
+// HTML id's for disable/enable functions
 const ALGORITHMS = [
     "#bubble-sort",
     "#insertion-sort",
@@ -25,6 +29,7 @@ const ALGORITHMS = [
     "#quick-sort"
 ]
 
+// function to disable buttons and inputs during sort
 function disableUserInput() {
     for (i in ALGORITHMS) {
         document.querySelector(ALGORITHMS[i]).disabled = true;
@@ -34,6 +39,7 @@ function disableUserInput() {
     document.querySelector("#sort-speed").disabled = false;
 }
 
+// after sort, function enables buttons for new arrays/sorts
 function enableUserInput() {
     for (i in ALGORITHMS) {
         document.querySelector(ALGORITHMS[i]).disabled = false;
@@ -43,6 +49,7 @@ function enableUserInput() {
     document.querySelector("#sort-speed").disabled = true;     
 }
 
+// colors for marking function
 const COLORS = {
     selector: '#ff0000',
     deselector: '#28559e',
@@ -51,6 +58,7 @@ const COLORS = {
     partitioner: '#53f925'
 };
 
+// animation function that pauses sorter for visual effect
 let pauseTime = 250;
 function pauseSorter(ms) {
 	return new Promise(resolve => {
@@ -58,6 +66,8 @@ function pauseSorter(ms) {
 	})
 }
 
+// speed toggler calls animation (pause) function to
+// determine speed of algorithm
 let sortSpeed = document.getElementById("sort-speed");
 sortSpeed.addEventListener("input", () => {
     pauseTime = 250 / (parseInt(sortSpeed.value));
