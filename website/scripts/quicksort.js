@@ -1,12 +1,25 @@
+/*
+* Quick Sort algorithm "divides and conquers", similar to the Merge Sort.
+* An element is selected as the pivot and partitions a given array
+* around the pivot. In the implementation below, the pivot is selected
+* as the furthermost (or last) element and orders the pivot element
+* of the array in the correct position of sorted array while 
+* selecting elements smaller than pivot's element to the left of pivot
+* and elements greater than pivot to the right.
+*/
 async function partition(column, left, right) {
+	// places pivot equal to last element
 	let pivot = right;
+	// index smaller element = right position of pivot
 	let i = left - 1;
 	markColumn(column[pivot], COLORS.selector);
 
 	for (let j = left; j <= right - 1; j++) {
 		markColumn(column[j], COLORS.partitioner);
 		await pauseSorter(pauseTime);
+		// if pivot is greater than current element
 		if (compareColumns(column[pivot], column[j])) {
+			// increment index of smaller element
 			i++;
 			markColumn(column[i], COLORS.inserter);
 			markColumn(column[j], COLORS.inserter);
@@ -17,29 +30,39 @@ async function partition(column, left, right) {
 			await pauseSorter(pauseTime);
 		}
 	}
-	swapColumns(column[++i], column[right]);
+	// swap columns in array
+	swapColumns(column[i + 1], column[right]);
 
 	await pauseSorter(pauseTime);
-
+	// 38 - 44 are for visual purpose
 	for(let k = 0; k <= pivot; k++) {
-		markColumn(column[k], COLORS.complete);
+		markColumn(column[k], COLORS.deselector);
 	}
 
 	for (let k = pivot + 1; k < column.length; k++) {
-		markColumn(column[k], COLORS.complete);
+		markColumn(column[k], COLORS.deselector);
 	}
 
-	return i;
+	return i + 1;
 }
 
+/*
+* recursive function implemented in main quickSort()
+* column param is array to be sorted,
+* left param is the starting index,
+* right param is the end index.
+*/
 async function quickSortHelper(column, left, right) {
 	if (left < right) {
-		let pivotIndex = await partition(column, left, right);
-		await quickSortHelper(column, left, pivotIndex - 1);
-		await quickSortHelper(column, pivotIndex + 1, right);
+		// set index of partitioner.
+		let partitionIndex = await partition(column, left, right);
+		// recursive function to sort elements before and after partition
+		await quickSortHelper(column, left, partitionIndex - 1);
+		await quickSortHelper(column, partitionIndex + 1, right);
 	}
 }
 
+// driver quickSort() function
 async function quickSort() {
 	disableUserInput();
 	let column = document.querySelectorAll(".column");
