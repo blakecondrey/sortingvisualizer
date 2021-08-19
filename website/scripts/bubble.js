@@ -4,7 +4,6 @@ async function bubbleSort() {
 	const column = document.querySelectorAll(".column");
 	for (let i = 0; i < column.length - 1; i++) {
 		for (let j = 0; j < column.length - i - 1; j++) {
-			// if (parseInt(column[j].style.height) > parseInt(column[j + 1].style.height)) {
 			if (compareColumns(column[j], column[j + 1])) {
 				markColumn(column[j], COLORS.selector);
 				markColumn(column[j + 1], COLORS.selector);	
