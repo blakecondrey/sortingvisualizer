@@ -1,6 +1,6 @@
 /*
 * Insertion Sort algorithm virtually splits array of N elements into
-* a sorted and unsorted parts. Elements in the unsorted part of the array
+* sorted and unsorted parts. Elements in the unsorted part of the array
 * are selected and inserted into correct position into the sorted
 * of the array, similar to the way humans sort and organize a hand
 * of cards dealt in nearly every card-playing game.
