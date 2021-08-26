@@ -22,7 +22,7 @@ async function selectionSort() {
 			if (compareColumns(column[min], column[j])) {
 				// values swapped
 				min = j;
-				markColumn(column[min], COLORS.inserter);
+				markColumn(column[min], COLORS.deselector);
 				await pauseSorter(pauseTime);
 			}
 			// 27 - 38 are for visual purposes in site
@@ -41,7 +41,7 @@ async function selectionSort() {
 		swapColumns(column[i], column[min]);
 		markColumn(column[i], COLORS.deselector);
 	}
-	// traverse backward and return to original color
+	// traverse backward and return to original
 	for (let k = column.length - 1; k >= 0; k--) {
 		markColumn(column[k], COLORS.complete);
 		await pauseSorter(100 / newArray.length);

@@ -1,7 +1,7 @@
 /*
-* Merge Sort is an algorithm that "divides and conquers", my splitting the
+* Merge Sort is an algorithm that "divides and conquers", by splitting the
 * array into two halves, then calls itself for the two halves and
-* finshes my merging the two halves.
+* finshes by merging the two halves.
 * merge(column, start, middle, end) assumes that col[start...middle]
 * col[middle + 1, end] are sorted, completes merger of the sub-arrays
 * SEE https://en.wikipedia.org/wiki/File:Merge_sort_algorithm_diagram.svg for 

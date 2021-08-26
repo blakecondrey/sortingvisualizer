@@ -1,6 +1,6 @@
 /*
 * Insertion Sort algorithm virtually splits array of N elements into
-* a sorted and unsorted parts. Elements in the unsorted part of the array
+* sorted and unsorted parts. Elements in the unsorted part of the array
 * are selected and inserted into correct position into the sorted
 * of the array, similar to the way humans sort and organize a hand
 * of cards dealt in nearly every card-playing game.
@@ -16,8 +16,9 @@ async function insertionSort() {
 		let key = column[i].style.height;
 		// set column for comparison to key
 		let j = i - 1;
-		markColumn(column[i], COLORS.inserter);
+		markColumn(column[i], COLORS.selector);
 		await pauseSorter(pauseTime);
+		markColumn(column[i], COLORS.deselector);
 		// while-loop for comparison of col[j] to key moves elements of
 		// col[0 -> i - 1] ahead of current position
 		while (j >= 0 && (parseInt(column[j].style.height) > parseInt(key))) {
