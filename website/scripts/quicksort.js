@@ -15,14 +15,14 @@ async function partition(column, left, right) {
 	markColumn(column[pivot], COLORS.selector);
 
 	for (let j = left; j <= right - 1; j++) {
-		markColumn(column[j], COLORS.partitioner);
+		markColumn(column[j], COLORS.selector);
 		await pauseSorter(pauseTime);
 		// if pivot is greater than current element
 		if (compareColumns(column[pivot], column[j])) {
 			// increment index of smaller element
 			i++;
-			markColumn(column[i], COLORS.inserter);
-			markColumn(column[j], COLORS.inserter);
+			markColumn(column[i], COLORS.selector);
+			markColumn(column[j], COLORS.selector);
 			await pauseSorter(pauseTime);
 			swapColumns(column[i], column[j]);
 			markColumn(column[i], COLORS.deselector);
@@ -68,10 +68,12 @@ async function quickSort() {
 	let column = document.querySelectorAll(".column");
 	for (let k = column.length - 1; k >= 0; k--) {
 		markColumn(column[k], COLORS.complete);
+		await pauseSorter(100 / newArray.length);
 	}
 	await quickSortHelper(column, 0, parseInt(column.length) - 1);
 	for (let k = column.length - 1; k >= 0; k--) {
 		markColumn(column[k], COLORS.complete);
+		await pauseSorter(100 / newArray.length);
 	}
 	enableUserInput();
 }
