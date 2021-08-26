@@ -21,8 +21,8 @@ async function partition(column, left, right) {
 		if (compareColumns(column[pivot], column[j])) {
 			// increment index of smaller element
 			i++;
-			markColumn(column[i], COLORS.selector);
-			markColumn(column[j], COLORS.selector);
+			markColumn(column[i], COLORS.complete);
+			markColumn(column[j], COLORS.complete);
 			await pauseSorter(pauseTime);
 			swapColumns(column[i], column[j]);
 			markColumn(column[i], COLORS.deselector);
