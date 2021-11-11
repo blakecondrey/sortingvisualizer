@@ -10,33 +10,44 @@ async function bubbleSort() {
 	disableUserInput();
 	// Select columns in the array for manipulation in algorithm
 	const column = document.querySelectorAll(".column");
+	// flag for while loop
+	let isSorted = false;
+	// counter for round comparison | incremented after for-loop escape
+	let counter = 0;
 	// outer loop to traverse length of array
-	for (let i = 0; i < column.length - 1; i++) {
+	while(!isSorted) {
+		isSorted = true;
 		// inner loop to traverse and compare column values
-		for (let j = 0; j < column.length - i - 1; j++) {
-			// see helper functions
-			if (compareColumns(column[j], column[j + 1])) {
-				markColumn(column[j], COLORS.selector);
-				markColumn(column[j + 1], COLORS.selector);	
-				swapColumns(column[j], column[j + 1]);
-				await pauseSorter(2 * pauseTime);
-				markColumn(column[j], COLORS.deselector);
-				markColumn(column[j + 1], COLORS.deselector);
-				await pauseSorter(pauseTime);
+		for (let i = 0; i < column.length - 1 - counter; i++) {
+			if (compareColumns(column[i], column[i + 1])) {
+				markColumn(column[i], COLORS.selector);
+				markColumn(column[i + 1], COLORS.selector);
+				// swapColumns(column[i], column[i + 1]);
+				await pauseSorter(pauseTime / 25);
+				swapColumns(column[i], column[i + 1]);
+				markColumn(column[i], COLORS.deselector);
+				markColumn(column[i + 1], COLORS.deselector);
+				await pauseSorter(pauseTime / 25);
+				// reenter while loop
+				isSorted = false;
 			}
 			// breaks loop condition to mark columns as sorted
 			// prior to compare function
 			else {
-				markColumn(column[j], COLORS.deselector);
-				markColumn(column[j + 1], COLORS.deselector);
-				await pauseSorter(pauseTime);
+				markColumn(column[i], COLORS.deselector);
+				markColumn(column[i + 1], COLORS.deselector);
+				await pauseSorter(pauseTime / 25);
+				// reenter while loop
+				isSorted = false;
 			}
 			// once columns are sorted, loop traverses array
 			// of columns to return to original color
-			for (let k = j; k >= 0; k--) {
-				markColumn(column[k], COLORS.complete);
+			for (let j = i; j >= 0; j--) {
+				markColumn(column[j], COLORS.complete);
 			}
 		}
+		// increase counter for inner loop comparison
+		counter++;
 	}
 	// return to completed color
 	for (let k = column.length - 1; k >= 0; k--) {

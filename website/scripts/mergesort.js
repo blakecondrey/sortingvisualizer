@@ -8,32 +8,44 @@
 * a visual diagram.
 */
 async function merge(column, start, middle, end) {
-	const valueFront = middle - start + 1;
-	const valueStart = end - middle;
+	const firstAuxillaryArrayValue = middle - start + 1;
+	const secondAuxillaryArrayValue = end - middle;
 
 	// temporary arrays
 	let left = [];
 	let right = [];
 
-	// copy data to temporary arrays of left and right (lines 17-27)
-	for (let i = 0; i < valueFront; i++) {
+	// // copy data to temporary arrays of left and right (lines 17-27)
+
+	for (let i = 0, j = i - 1; i < firstAuxillaryArrayValue, j < secondAuxillaryArrayValue; i++, j++) {
 		markColumn(column[start + i], COLORS.selector);
+		markColumn(column[middle + 1 + j], COLORS.selector);
 		left[i] = column[start + i].style.height;
-		await pauseSorter(pauseTime);
+		right[j] = column[middle + 1 + j].style.height;
+		// await pauseSorter(pauseTime / 10);
+		await pauseSorter(pauseTime * 2);
 	}
 
-	for (let i = 0; i < valueStart; i++) {
-		markColumn(column[middle + 1 + i], COLORS.selector);
-		right[i] = column[middle + 1 + i].style.height;
-		await pauseSorter(pauseTime);
-	}
+	//------------PREVIOUS IMPLEMENTATION BELOW-----------------|		
+	// for (let i = 0; i < firstAuxillaryArrayValue; i++) {				    |
+	// 	markColumn(column[start + i], COLORS.selector);         |
+	// 	left[i] = column[start + i].style.height;               |
+	// 	await pauseSorter(pauseTime);                           |
+	// }                                                        |
+    //                                                          |
+	// for (let i = 0; i < secondAuxillaryArrayValue; i++) {                   |
+	// 	markColumn(column[middle + 1 + i], COLORS.selector);    |
+	// 	right[i] = column[middle + 1 + i].style.height;         |
+	// 	await pauseSorter(pauseTime);                           |
+	// }                                                        |
+	//----------------------------------------------------------|
 
 	// i = 0 is init index of first subarray
 	// j = 0 is init index of second subarray
 	// k = start is init index of merged subarray
 	let i = 0, j = 0, k = start;
 
-	while( i < valueFront && j < valueStart) {
+	while( i < firstAuxillaryArrayValue && j < secondAuxillaryArrayValue) {
 		//compareColumns() obsolete for merge()
 		// must be <=
 		if (parseInt(left[i]) <= parseInt(right[j])) {
@@ -41,20 +53,20 @@ async function merge(column, start, middle, end) {
 			// virtual swap
 			column[k].style.height = left[i];
 			i++;
-			k++;
+			//k++;
 		}
-
 		else {
 			markColumn(column[k], COLORS.deselector);
 			column[k].style.height = right[j];
 			j++;
-			k++;
+			// k++;
 		}
-		await pauseSorter(pauseTime);
+		k++;
+		await pauseSorter(pauseTime / 10);
 	}
 
 	// copy remaining elements of left[], if any
-	while (i < valueFront) {
+	while (i < firstAuxillaryArrayValue) {
 		markColumn(column[k], COLORS.deselector);
 		column[k].style.height = left[i];
 		i++;
@@ -62,12 +74,12 @@ async function merge(column, start, middle, end) {
 		await pauseSorter(pauseTime);
 	}
 	// copy remaining elents of right[], if any
-	while (j < valueStart) {
+	while (j < secondAuxillaryArrayValue) {
 		markColumn(column[k], COLORS.deselector);
 		column[k].style.height = right[j];
 		j++;
 		k++;
-		await pauseSorter(pauseTime);
+		await pauseSorter(pauseTime / 10);
 	}
 }
 

@@ -16,24 +16,24 @@ async function partition(column, left, right) {
 
 	for (let j = left; j <= right - 1; j++) {
 		markColumn(column[j], COLORS.selector);
-		await pauseSorter(pauseTime);
+		await pauseSorter(pauseTime / 10);
 		// if pivot is greater than current element
 		if (compareColumns(column[pivot], column[j])) {
 			// increment index of smaller element
 			i++;
 			markColumn(column[i], COLORS.complete);
 			markColumn(column[j], COLORS.complete);
-			await pauseSorter(pauseTime);
+			await pauseSorter(pauseTime / 10);
 			swapColumns(column[i], column[j]);
 			markColumn(column[i], COLORS.deselector);
 			markColumn(column[j], COLORS.deselector);
-			await pauseSorter(pauseTime);
+			await pauseSorter(pauseTime / 10);
 		}
 	}
 	// swap columns in array
 	swapColumns(column[i + 1], column[right]);
 
-	await pauseSorter(pauseTime);
+	await pauseSorter(pauseTime / 10);
 	// 38 - 44 are for visual purpose
 	for(let k = 0; k <= pivot; k++) {
 		markColumn(column[k], COLORS.deselector);
