@@ -19,14 +19,14 @@ function generateRandomArray() {
 	for (let i = 0; i < arraySize; i++) {
 		newArray.push(randomIntFromInterval(5, 700));
 	}
-		const columns = document.querySelector("#columns");
+	const columns = document.querySelector("#columns");
 	// create columns to be generated
 	for (let i = 0; i < arraySize; i++) {
 		const column = document.createElement("div");
         column.style.height = `${newArray[i] / 1.5}px`;
         column.classList.add('column');
         column.classList.add('generated-column');
-        column.classList.add(`columnNo${i}`);
+        column.classList.add(`columnNo${i + 1}`);
         columns.appendChild(column);
 	}
 }

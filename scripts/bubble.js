@@ -23,11 +23,11 @@ async function bubbleSort() {
 				markColumn(column[i], COLORS.selector);
 				markColumn(column[i + 1], COLORS.selector);
 				// swapColumns(column[i], column[i + 1]);
-				await pauseSorter(2 * pauseTime);
+				await pauseSorter(pauseTime / 25);
 				swapColumns(column[i], column[i + 1]);
 				markColumn(column[i], COLORS.deselector);
 				markColumn(column[i + 1], COLORS.deselector);
-				await pauseSorter(2 * pauseTime);
+				await pauseSorter(pauseTime / 25);
 				// reenter while loop
 				isSorted = false;
 			}
@@ -36,7 +36,7 @@ async function bubbleSort() {
 			else {
 				markColumn(column[i], COLORS.deselector);
 				markColumn(column[i + 1], COLORS.deselector);
-				await pauseSorter(pauseTime);
+				await pauseSorter(pauseTime / 25);
 				// reenter while loop
 				isSorted = false;
 			}

@@ -23,12 +23,12 @@ async function selectionSort() {
 				// values swapped
 				min = j;
 				markColumn(column[min], COLORS.deselector);
-				await pauseSorter(pauseTime);
+				await pauseSorter(pauseTime / 25);
 			}
 			// 27 - 38 are for visual purposes in site
 			else {
 				markColumn(column[j], COLORS.deselector);
-				await pauseSorter(pauseTime);
+				await pauseSorter(pauseTime / 25);
 			}
 			for (let k = min + 1; k < column.length; k++) {
 				markColumn(column[k], COLORS.complete);

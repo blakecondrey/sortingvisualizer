@@ -17,7 +17,7 @@ async function insertionSort() {
 		// set column for comparison to key
 		let j = i - 1;
 		markColumn(column[i], COLORS.selector);
-		await pauseSorter(pauseTime);
+		await pauseSorter(pauseTime / 25);
 		markColumn(column[i], COLORS.deselector);
 		// while-loop for comparison of col[j] to key moves elements of
 		// col[0 -> i - 1] ahead of current position
@@ -25,7 +25,7 @@ async function insertionSort() {
 			swapColumns(column[j + 1], column[j]);
 			markColumn(column[j], COLORS.selector);
 			j--;
-			await pauseSorter(pauseTime);
+			await pauseSorter(pauseTime / 25);
 			for (let k = i; k >=0; k--) {
 				markColumn(column[k], COLORS.deselector);
 			}
