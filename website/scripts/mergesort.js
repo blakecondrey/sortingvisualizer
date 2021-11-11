@@ -20,10 +20,9 @@ async function merge(column, start, middle, end) {
 	for (let i = 0, j = i - 1; i < firstAuxillaryArrayValue, j < secondAuxillaryArrayValue; i++, j++) {
 		markColumn(column[start + i], COLORS.selector);
 		markColumn(column[middle + 1 + j], COLORS.selector);
+		await pauseSorter(pauseTime / 10);
 		left[i] = column[start + i].style.height;
 		right[j] = column[middle + 1 + j].style.height;
-		// await pauseSorter(pauseTime / 10);
-		await pauseSorter(pauseTime * 2);
 	}
 
 	//------------PREVIOUS IMPLEMENTATION BELOW-----------------|		
