@@ -12,7 +12,7 @@ async function partition(column, left, right) {
 	let pivot = right;
 	// index smaller element = right position of pivot
 	let i = left - 1;
-	markColumn(column[pivot], COLORS.selector);
+	markColumn(column[pivot], COLORS.pivot);
 
 	for (let j = left; j <= right - 1; j++) {
 		markColumn(column[j], COLORS.selector);
@@ -21,8 +21,8 @@ async function partition(column, left, right) {
 		if (compareColumns(column[pivot], column[j])) {
 			// increment index of smaller element
 			i++;
-			markColumn(column[i], COLORS.complete);
-			markColumn(column[j], COLORS.complete);
+			markColumn(column[i], COLORS.selector);
+			markColumn(column[j], COLORS.selector);
 			await pauseSorter(pauseTime / 10);
 			swapColumns(column[i], column[j]);
 			markColumn(column[i], COLORS.deselector);
@@ -36,7 +36,9 @@ async function partition(column, left, right) {
 	await pauseSorter(pauseTime / 10);
 	// 38 - 44 are for visual purpose
 	for(let k = 0; k <= pivot; k++) {
+		// markColumn(column[k], COLORS.deselector);
 		markColumn(column[k], COLORS.deselector);
+		
 	}
 
 	for (let k = pivot + 1; k < column.length; k++) {

@@ -54,6 +54,7 @@ const COLORS = {
     selector: '#ff0000',
     deselector: '#28559e',
     complete: '#64ffda',
+    pivot: '#BF40BF',
 };
 
 // animation function that pauses sorter for visual effect
