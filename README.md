@@ -14,4 +14,3 @@ The array size can be increased/decreased prior to sorting, and the sorting spee
 This project was a fantastic exercise to grasp the concepts of sorting algorithms, and gave me the chance to sharpen-up on JavaScript and Bootstrap.
 <br><br>
 The source code may be forked or copy-pasted for your use.<br><br>
-www.blakecondrey.com
