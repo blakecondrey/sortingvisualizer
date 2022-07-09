@@ -1,4 +1,4 @@
-m<h2><strong>Sorting Visualization Tool</strong></h2><br><br>
+<h2><strong>Sorting Visualization Tool</strong></h2><br><br>
 
 live website: https://blakecondrey.github.io/sortingvisualizer/ <br>
 
