@@ -5,7 +5,7 @@ live website: https://blakecondrey.github.io/sortingvisualizer/ <br>
 This website generates an array of random-heighted columns, and allows the user to visualize: <br>
 <ol>
   <li>Bubble Sort Algorithm</li>
-  <li>Insertion Sort Algorith</li>
+  <li>Insertion Sort Algorithm</li>
   <li>Selection Sort Algorithm</li>
   <li>Merge Sort Algorithm</li>
   <li>Quick Sort Algorithm</li>
